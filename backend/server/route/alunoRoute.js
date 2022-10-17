@@ -26,4 +26,14 @@ router.put('/aluno/cod_matricula', async function (req, res) {
 
 });
 
+router.get('/aluno/turma/:id', async function (req, res) {
+    const idTurma = req.params.id
+    try {
+        let json = await alunoService.selectAlunosByIdTurma(idTurma)
+        res.json(json)
+    } catch (error) {
+        res.status(422).send(error.message);
+    }
+});
+
 module.exports = router;

@@ -15,3 +15,13 @@ exports.salvar = function (instrutor) {
 exports.alterar = function (instrutor) {
     return data.alterar(instrutor);
 }
+
+exports.selectInstrutorByUserAndPassword = async function (dadosLoginInstrutor) {
+    const instrutor = await data.selectInstrutorByUserAndPassword(dadosLoginInstrutor)
+
+    if (instrutor.length === 0) {
+        throw new Error("Usuário não permitido!")
+    }
+
+    return instrutor
+}

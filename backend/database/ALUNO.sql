@@ -2,6 +2,8 @@ drop table if exists aluno;
 
 create table aluno (
 	cod_matricula SERIAL PRIMARY KEY,
+	usuario_login VARCHAR(100) NOT NULL UNIQUE,
+	usuario_senha VARCHAR(100) NOT NULL,
 	data_inclusao TIMESTAMP NOT NULL,
 	data_alteracao TIMESTAMP,
 	nome VARCHAR(45) NOT NULL,

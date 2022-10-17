@@ -29,4 +29,16 @@ router.put('/instrutor/codigo', async function (req, res) {
 
 });
 
+router.post('/instrutor/login', async function (req, res) {
+    const dados = req.body
+    try {
+        let instrutor = await instrutorService.selectInstrutorByUserAndPassword(dados)
+        res.json(instrutor)
+    } catch (e) {
+        res.status(401).send(e.message)
+    }
+    
+
+});
+
 module.exports = router;

@@ -15,3 +15,13 @@ exports.salvar = async function (turma) {
 exports.alterar = async function (turma) {
     return data.alterar(turma);
 }
+
+exports.selectTurmasByInstrutorId = async function (id) {
+    const turmas = await data.selectTurmasByInstrutorId(id)
+
+    if (turmas.length === 0) {
+        throw new Error("Não existem turmas para o instrutor!")
+    }
+
+    return turmas
+}

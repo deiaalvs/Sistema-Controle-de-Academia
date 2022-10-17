@@ -10,3 +10,14 @@ exports.salvar = function (dados) {
         [aluno.data_inclusao, aluno.cod_matricula, aluno.nome, aluno.numero_celular, aluno.data_nascimento, aluno.altura, aluno.peso, aluno.status]
     )
 }
+
+exports.selectAlunosByIdTurma = async function (idTurma) {
+    return database.query(`
+        SELECT *
+            FROM aluno a
+            INNER JOIN matricula m ON m.codigo_aluno = a.cod_matricula
+            INNER JOIN turma t ON t.codigo = m.codigo_turma
+        WHERE
+            t.codigo = $1
+    `, [idTurma.codigo])
+}

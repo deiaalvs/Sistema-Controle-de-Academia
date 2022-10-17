@@ -2,6 +2,8 @@ drop table if exists instrutor;
 
 create table instrutor (
 	codigo SERIAL PRIMARY KEY,
+	usuario_login VARCHAR(100) NOT NULL UNIQUE,
+	usuario_senha VARCHAR(100) NOT NULL,
 	data_inclusao TIMESTAMP NOT NULL,
 	data_alteracao TIMESTAMP,
 	rg INTEGER NOT NULL,

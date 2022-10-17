@@ -27,3 +27,13 @@ exports.alterar = function (aluno) {
     return data.alterar(aluno);
     
 }
+
+exports.selectAlunosByIdTurma = async function (idTurma) {
+    const alunos = await data.selectAlunosByIdTurma(idTurma)
+
+    if (alunos.length === 0) {
+        throw new Error("Não existem alunos para essa turma!")
+    }
+
+    return alunos
+}

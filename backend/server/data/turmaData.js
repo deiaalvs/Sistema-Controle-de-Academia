@@ -17,3 +17,14 @@ exports.selectInstrutorByHoraInicioHoraFim = function(turma) {
         [turma.hora_inicio, turma.data_fim, turma.instrutor]
     )
 }
+
+exports.selectTurmasByInstrutorId = function(id) {
+    return database.query(
+        `
+        SELECT * FROM
+        turma t
+        WHERE
+            t.instrutor = $1`,
+        [id.instrutor]
+    )
+}
