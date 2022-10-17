@@ -9,4 +9,21 @@ router.get('/aluno', async function (req, res) {
 
 });
 
+router.post('/aluno', async function (req, res) {
+    const dados = req.body
+    try {
+        alunoService.salvar(dados)
+        res.send("SUCESSO");
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+});
+
+router.put('/aluno/cod_matricula', async function (req, res) {
+    const dados = req.body
+    alunoService.alterar(dados)
+    res.send("DADOS ALTERADOS");
+
+});
+
 module.exports = router;
